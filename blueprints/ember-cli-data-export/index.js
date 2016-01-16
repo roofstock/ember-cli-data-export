@@ -8,6 +8,8 @@ module.exports = {
   // }
 
    afterInstall: function(options) {
-     return this.addBowerPackageToProject("file-saver");
+     return this.addBowerPackageToProject("file-saver").then(function() {
+       return this.addBowerPackageToProject("Blob");
+     });
    }
 };
