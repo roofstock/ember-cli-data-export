@@ -1,7 +1,8 @@
 {
   "name": "ember-cli-data-export",
-  "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "version": "0.0.1",
+  "author" : "Matt Armstrong",
+  "description": "Provides ability to export a set of json data as excel or csv file.",
   "directories": {
     "doc": "doc",
     "test": "tests"

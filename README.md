@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Ember-cli-data-export
 
 This README outlines the details of collaborating on this Ember addon.
@@ -23,3 +24,6 @@ This README outlines the details of collaborating on this Ember addon.
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+=======
+# ember-cli-data-export
+>>>>>>> 3819fce13b7ec70cd8526916af2adf31935fdd0b
