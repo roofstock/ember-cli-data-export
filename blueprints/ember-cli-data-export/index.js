@@ -9,8 +9,7 @@ module.exports = {
 
    afterInstall: function(options) {
      return this.addBowerPackageToProject([
-       {name: "file-saver"},
-       {name:"Blob"}
+       {name: "file-saver"}
      ]);
    }
 };
