@@ -2,7 +2,7 @@ import Ember from "ember";
 
 export default Ember.Service.extend({
 
-  exportData : function(data) {
+  exportData : function(data, sheetName, fileName) {
 
     function s2ab(s) {
       var buf = new ArrayBuffer(s.length);
@@ -45,10 +45,6 @@ export default Ember.Service.extend({
       return ws;
     }
 
-    /* original data */
-    var data = [[1,2,3],[true, false, null, "sheetjs"],["foo","bar",new Date("2014-02-19T14:30Z"), "0.3"], ["baz", null, "qux"]]
-    var ws_name = "SheetJS";
-
     function Workbook() {
       if(!(this instanceof Workbook)) return new Workbook();
       this.SheetNames = [];
@@ -58,11 +54,11 @@ export default Ember.Service.extend({
     var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
 
     /* add worksheet to workbook */
-    wb.SheetNames.push(ws_name);
-    wb.Sheets[ws_name] = ws;
+    wb.SheetNames.push(sheetName);
+    wb.Sheets[sheetName] = ws;
     var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
 
-    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), "test.xlsx")
+    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), fileName);
 
   }
 
