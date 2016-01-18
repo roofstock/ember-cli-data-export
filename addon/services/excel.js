@@ -2,7 +2,15 @@ import Ember from "ember";
 
 export default Ember.Service.extend({
 
-  exportData : function(data, sheetName, fileName) {
+  exportAsExcel : function(data, sheetName, fileName) {
+
+    if (!sheetName) {
+      sheetName = "Sheet1";
+    }
+
+    if (!fileName) {
+      fileName = "export.xlsx";
+    }
 
     function s2ab(s) {
       var buf = new ArrayBuffer(s.length);
