@@ -17,11 +17,14 @@ export default Ember.Service.extend({
       // add heading row
       var head = array[0];
       for (var i = 0; i < head.length; i++) {
-        var line = '';
         var value = head[i] + "";
-        line += '"' + value.replace(/"/g, '""') + '",';
-        str += line + '\r\n';
+        if (index > 0) {
+          line += ',';
+        }
+        line += '"' + value.replace(/"/g, '""') + '"';
       }
+
+      str += line + '\r\n';
 
       // add items
       for (var i = 1; i < array.length; i++) {
