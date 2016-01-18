@@ -2,7 +2,7 @@ import Ember from "ember";
 
 export default Ember.Service.extend({
 
-  exportAsExcel : function(data, sheetName, fileName) {
+  export : function(data, sheetName, fileName) {
 
     if (!sheetName) {
       sheetName = "Sheet1";

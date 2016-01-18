@@ -2,7 +2,7 @@ import Ember from "ember";
 
 export default Ember.Service.extend({
 
-  exportAsCsv: function (data, fileName) {
+  export: function (data, fileName) {
 
     if (!fileName) {
       fileName = "export.csv";
@@ -18,7 +18,7 @@ export default Ember.Service.extend({
       var head = array[0];
       for (var i = 0; i < head.length; i++) {
         var line = '';
-        var value = head[index] + "";
+        var value = head[i] + "";
         line += '"' + value.replace(/"/g, '""') + '",';
       }
 
@@ -28,7 +28,7 @@ export default Ember.Service.extend({
       for (var i = 1; i < array.length; i++) {
         var line = '';
 
-        for (var index in array[i]) {
+        for (var index = 0; index < array[i].length; index++) {
           var value = array[i][index] + "";
           line += '"' + value.replace(/"/g, '""') + '",';
         }
