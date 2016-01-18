@@ -20,9 +20,8 @@ export default Ember.Service.extend({
         var line = '';
         var value = head[i] + "";
         line += '"' + value.replace(/"/g, '""') + '",';
+        str += line + '\r\n';
       }
-
-      str += line + '\r\n';
 
       // add items
       for (var i = 1; i < array.length; i++) {
@@ -30,7 +29,10 @@ export default Ember.Service.extend({
 
         for (var index = 0; index < array[i].length; index++) {
           var value = array[i][index] + "";
-          line += '"' + value.replace(/"/g, '""') + '",';
+          if (index > 0) {
+            line += ',';
+          }
+          line += '"' + value.replace(/"/g, '""') + '"';
         }
 
         str += line + '\r\n';
