@@ -18,7 +18,7 @@ export default Ember.Service.extend({
       var head = array[0];
       for (var i = 0; i < head.length; i++) {
         var value = head[i] + "";
-        if (index > 0) {
+        if (i > 0) {
           line += ',';
         }
         line += '"' + value.replace(/"/g, '""') + '"';
