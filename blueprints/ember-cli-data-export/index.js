@@ -8,9 +8,8 @@ module.exports = {
   // }
 
    afterInstall: function(options) {
-     return this.addBowerPackageToProject([
-       {name: "file-saver"},
-       {name: 'js-xlsx'}
-     ]);
+     return this.addBowerPackageToProject('file-saver').then(function() {
+       return this.addBowerPackageToProject('js-xlsx');
+     }.bind(this));
    }
 };
