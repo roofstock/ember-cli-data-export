@@ -5,9 +5,8 @@ module.exports = {
   name: 'ember-cli-data-export',
 
   included: function(app) {
-    this._super.included(app);
-    this.app.import('vendor/Blob.js');
-    this.app.import(app.bowerDirectory + '/file-saver/FileSaver.js');
-    this.app.import(app.bowerDirectory + '/js-xlsx/dist/xlsx.js');
+    app.import('vendor/Blob.js');
+    app.import('bower_components/file-saver/FileSaver.js');
+    app.import('bower_components/js-xlsx/dist/xlsx.js');
   }
 };
