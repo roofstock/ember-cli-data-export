@@ -8,5 +8,6 @@ module.exports = {
     this._super.included(app);
     this.app.import('vendor/Blob.js');
     this.app.import(app.bowerDirectory + '/file-saver/FileSaver.js');
+    this.app.import(app.bowerDirectory + '/xlsx/dist/xlsx.js');
   }
 };
