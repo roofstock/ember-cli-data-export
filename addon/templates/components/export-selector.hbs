@@ -1,4 +1,4 @@
-<div style="white-space: nowrap">
+<div class='export-selector-container' style="white-space: nowrap">
   {{view "select" content=types value=selectedType}}
-  <button {{action 'triggerExport'}} style="margin-left:5px">Export</button>
+  <button {{action 'triggerExport'}} style="margin-left:5px">{{actionText}}</button>
 </div>
