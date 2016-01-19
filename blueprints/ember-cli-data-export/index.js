@@ -1,19 +1,7 @@
 module.exports = {
   description: 'Installs the underlying slider component using bower',
 
-  // locals: function(options) {
-  //   // Return custom template variables here.
-  //   return {
-  //     foo: options.entity.options.foo
-  //   };
-  // }
-
-  normalizeEntityName: function() {
-    // this prevents an error when the entityName is
-    // not specified (since that doesn't actually matter
-    // to us
-    return "";
-  },
+  normalizeEntityName: function() {}, // no-op since we're just adding dependencies
 
 
   afterInstall: function(options) {
