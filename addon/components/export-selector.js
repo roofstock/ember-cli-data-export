@@ -4,8 +4,9 @@ import layout from '../templates/components/export-selector';
 export default Ember.Component.extend({
   layout: layout,
   types: ['Excel', 'CSV'],
-  selectedType: 'Excel',
+  selectedType: null,
   actionText: 'Export',
+  selectPrompt: 'Export File',
 
   actions: {
     triggerExport: function() {
