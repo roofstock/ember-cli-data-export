@@ -1,4 +1,5 @@
 module.exports = {
+  description: 'Installs the underlying slider component using bower',
 
   // locals: function(options) {
   //   // Return custom template variables here.
