@@ -8,7 +8,7 @@ export default Ember.Component.extend({
 
   actions: {
     triggerExport: function() {
-      this.sendAction('exportData', selectedType);
+      this.sendAction('exportData', this.get('selectedType'));
     }
   }
 });
