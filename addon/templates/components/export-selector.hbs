@@ -1,4 +1,4 @@
 <div class='export-selector-container' style="white-space: nowrap">
-  {{simple-select content=types value=selectedType prompt=selectPrompt}}
+  {{simple-select content=types optionValuePath="id" optionLabelPath="display" value=selectedType prompt=selectPrompt}}
   <button {{action 'triggerExport'}} style="margin-left:5px">{{actionText}}</button>
 </div>
