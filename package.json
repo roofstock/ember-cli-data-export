@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-data-export",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author" : "Matt Armstrong",
   "description": "Provides ability to export a set of json data as excel or csv file.",
   "directories": {
@@ -29,6 +29,7 @@
   ],
   "dependencies": {
     "xlsx": "^0.8.0",
+    "ember-select-list": "0.9.5",
     "ember-cli-htmlbars": "0.7.9"
   },
   "ember-addon": {
