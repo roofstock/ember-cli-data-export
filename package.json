@@ -29,8 +29,7 @@
   ],
   "dependencies": {
     "xlsx": "^0.8.0",
-    "ember-cli-htmlbars": "0.7.9",
-    "ember-simple-select": "0.5.0"
+    "ember-cli-htmlbars": "0.7.9"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
