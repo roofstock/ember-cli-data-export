@@ -5,9 +5,8 @@ export default Ember.Component.extend({
   layout: layout,
   types: [
     {id: 'excel', 'display': 'Excel'},
-    {id: 'csv', 'display': 'CSV'},
+    {id: 'csv', 'display': 'CSV'}
   ],
-  selectedType: null,
   actionText: 'Export',
   selectPrompt: 'Export File',
 
