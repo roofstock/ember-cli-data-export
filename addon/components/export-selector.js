@@ -3,8 +3,10 @@ import layout from '../templates/components/export-selector';
 
 export default Ember.Component.extend({
   layout: layout,
-  types: [ this.get('selectPrompt'), 'Excel', 'CSV' ],
-  selectedType: null,
+  types: Ember.computed(function() {
+    return [this.get('selectPrompt'), 'Excel', 'CSV']
+  }),
+  selectedType : null,
   actionText: 'Export',
   selectPrompt: 'Export File',
 
