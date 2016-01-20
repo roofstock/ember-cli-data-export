@@ -40,7 +40,7 @@ export default Ember.Service.extend({
 
           if(typeof cell.v === 'number') cell.t = 'n';
           else if(typeof cell.v === 'boolean') cell.t = 'b';
-          else if((cell.v instanceof Object) && (cell.v._d instanceof Date)) {
+          else if((typeof cell.v === 'object') && (cell.v._d instanceof Date)) {
             cell.t = 'n'; cell.z = XLSX.SSF._table[14];
             cell.v = datenum(cell.v._d);
           }
