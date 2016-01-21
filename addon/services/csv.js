@@ -51,7 +51,7 @@ export default Ember.Service.extend({
           }
           else {
             value = value + "";
-            if (value) {
+            if (value && value != 'undefined') {
               line += '"' + value.replace(/"/g, '""') + '"';
             }
             else {
