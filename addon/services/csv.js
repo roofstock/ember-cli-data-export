@@ -39,7 +39,7 @@ export default Ember.Service.extend({
           if (typeof value === 'object') {
             if (value) {
               var resolveValue;
-              if (value._d instanceof 'Date') {
+              if (value._d instanceof Date) {
                 resolveValue = value._d.toLocaleDateString();
               }
               else {
