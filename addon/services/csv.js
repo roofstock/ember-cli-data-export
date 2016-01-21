@@ -37,8 +37,17 @@ export default Ember.Service.extend({
             line += ',';
           }
           if (typeof value === 'object') {
-            var resolveValue = value._d.toString();
-            line += '"' + resolveValue.replace(/"/g, '""') + '"';
+            if (value) {
+              var resolveValue;
+              if (value._d) {
+                resolveValue = value._d.toString();
+              }
+
+              line += '"' + resolveValue.replace(/"/g, '""') + '"';
+            }
+            else {
+              line += '""';
+            }
           }
           else {
             value = value + "";
