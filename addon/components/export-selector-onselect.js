@@ -8,9 +8,8 @@ export default Ember.Component.extend({
   }),
   selectPrompt: 'Export File',
 
-  actions: {
-    triggerExport: function() {
-      this.sendAction('exportData', this.get('selectedType'));
-    }
+  triggerExport: function() {
+    this.sendAction('exportData', this.get('selectedType'));
   }
+
 });
