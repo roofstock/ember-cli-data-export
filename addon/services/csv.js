@@ -31,11 +31,24 @@ export default Ember.Service.extend({
         var line = '';
 
         for (var index = 0; index < array[i].length; index++) {
-          var value = array[i][index] + "";
+          var value = array[i][index];
+
           if (index > 0) {
             line += ',';
           }
-          line += '"' + value.replace(/"/g, '""') + '"';
+          if (typeof value === 'object') {
+            var resolveValue = value._d.toString();
+            line += '"' + resolveValue.replace(/"/g, '""') + '"';
+          }
+          else {
+            value = value + "";
+            if (value) {
+              line += '"' + value.replace(/"/g, '""') + '"';
+            }
+            else {
+              line += '""';
+            }
+          }
         }
 
         str += line + '\r\n';
