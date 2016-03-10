@@ -40,7 +40,8 @@ export default Ember.Service.extend({
             if (value) {
               var resolveValue;
               if (value._d instanceof Date) {
-                resolveValue = value._d.toLocaleDateString();
+                // dealing with encoding issue in IE browsers.
+                resolveValue = (value._d.getMonth() + 1) + '/' + value._d.getDate()  + '/' + value._d.getFullYear();
               }
               else {
                 resolveValue = value._d.toString();
