@@ -28,6 +28,7 @@
   ],
   "dependencies": {
     "ember-select-list": "^0.9.5",
+    "ember-cli-htmlbars": "1.1.0",
     "xlsx": "^0.8.0"
   },
   "ember-addon": {
