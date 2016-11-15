@@ -66,7 +66,7 @@ export default Ember.Service.extend({
     wb.Sheets[options.sheetName] = ws;
     var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
 
-    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), fileName);
+    saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), options.fileName);
 
   }
 
