@@ -1,16 +1,16 @@
 import Ember from "ember";
+import optionize from "../utils";
+
+const defaultConfig = {
+  sheetName: 'Sheet1',
+  fileName: 'export.xlsx'
+}
 
 export default Ember.Service.extend({
 
-  export : function(data, sheetName, fileName) {
+  export : function(data, options) {
 
-    if (!sheetName) {
-      sheetName = "Sheet1";
-    }
-
-    if (!fileName) {
-      fileName = "export.xlsx";
-    }
+    options = optionize(options, defaultConfig);
 
     function s2ab(s) {
       var buf = new ArrayBuffer(s.length);
@@ -62,8 +62,8 @@ export default Ember.Service.extend({
     var wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
 
     /* add worksheet to workbook */
-    wb.SheetNames.push(sheetName);
-    wb.Sheets[sheetName] = ws;
+    wb.SheetNames.push(options.sheetName);
+    wb.Sheets[options.sheetName] = ws;
     var wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
 
     saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), fileName);

@@ -1,12 +1,15 @@
 import Ember from "ember";
+import optionize from "../utils";
+
+const defaultConfig = {
+  fileName: 'export.csv'
+}
 
 export default Ember.Service.extend({
 
-  export: function (data, fileName) {
+  export: function (data, options) {
 
-    if (!fileName) {
-      fileName = "export.csv";
-    }
+    options = optionize(options, defaultConfig);
 
     function JSON2CSV(objArray) {
       var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
