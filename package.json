@@ -27,6 +27,7 @@
     "csv"
   ],
   "dependencies": {
+    "ember-cli-htmlbars": "1.1.0",
     "ember-select-list": "^0.9.5",
     "xlsx": "^0.8.0"
   },
