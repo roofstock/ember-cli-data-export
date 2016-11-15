@@ -1,5 +1,5 @@
 import Ember from "ember";
-import optionize from "../utils";
+import optionize from "../utils/utils";
 
 const defaultConfig = {
   sheetName: 'Sheet1',
