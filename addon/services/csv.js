@@ -1,12 +1,16 @@
 import Ember from "ember";
+import optionize from "../utils/utils";
+
+const defaultConfig = {
+  fileName: 'export.csv',
+  separator: ','
+}
 
 export default Ember.Service.extend({
 
-  export: function (data, fileName) {
+  export: function (data, options) {
 
-    if (!fileName) {
-      fileName = "export.csv";
-    }
+    options = optionize(options, defaultConfig);
 
     function JSON2CSV(objArray) {
       var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
@@ -14,12 +18,15 @@ export default Ember.Service.extend({
       var str = '';
       var line = '';
 
+      // add separator identifier;
+      str += `sep=${options.separator}\r\n`;
+
       // add heading row
       var head = array[0];
       for (var i = 0; i < head.length; i++) {
         var value = head[i] + "";
         if (i > 0) {
-          line += ',';
+          line += options.separator;
         }
         line += '"' + value.replace(/"/g, '""') + '"';
       }
@@ -34,7 +41,7 @@ export default Ember.Service.extend({
           var value = array[i][index];
 
           if (index > 0) {
-            line += ',';
+            line += options.separator;
           }
           if (typeof value === 'object') {
             if (value) {
@@ -71,7 +78,7 @@ export default Ember.Service.extend({
 
     var csv = JSON2CSV(data);
 
-    saveAs(new Blob([csv],{type:"data:text/csv;charset=utf-8"}), fileName);
+    saveAs(new Blob([csv],{type:"data:text/csv;charset=utf-8"}), options.fileName);
 
   }
 
