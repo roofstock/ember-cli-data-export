@@ -3,7 +3,8 @@ import optionize from "../utils/utils";
 
 const defaultConfig = {
   fileName: 'export.csv',
-  separator: ','
+  separator: ',',
+  withSeparator: true
 }
 
 export default Ember.Service.extend({
@@ -18,8 +19,10 @@ export default Ember.Service.extend({
       var str = '';
       var line = '';
 
-      // add separator identifier;
-      str += `sep=${options.separator}\r\n`;
+      if (options.withSeparator) {
+        // add separator identifier;
+        str += `sep=${options.separator}\r\n`;
+      }
 
       // add heading row
       var head = array[0];
