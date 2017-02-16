@@ -6,7 +6,9 @@ export default function optionize(options, defaultConfig){
   }
 
   for (let property in defaultConfig) {
-    options[property] = options[property] || defaultConfig[property];
+    options[property] = (typeof options[property] !== 'undefined') ?
+      options[property] :
+      defaultConfig[property];
   }
 
   return options;
