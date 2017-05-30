@@ -23,8 +23,8 @@ Addon that encapsulates ability to render a data set as either excel or csv.
     ];
 
     if (type === 'Excel') {
-      this.get('excel').export(data, 'sheet1', 'test.xlsx');
+      this.get('excel').export(data, {sheetName: 'sheet1', fileName: 'test.xlsx'});
     } else if (type === 'CSV') {
-      this.get('csv').export(data, 'test.csv');
+      this.get('csv').export(data, {fileName: 'test.csv'});
     }
 ```
