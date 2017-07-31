@@ -5,7 +5,7 @@ const defaultConfig = {
   fileName: 'export.csv',
   separator: ',',
   withSeparator: true
-}
+};
 
 export default Ember.Service.extend({
 
@@ -18,10 +18,11 @@ export default Ember.Service.extend({
   },
 
   jsonToCsv(objArray, options) {
-    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
 
     var str = '';
     var line = '';
+    var value;
 
     if (options.withSeparator) {
       // add separator identifier;
@@ -31,7 +32,7 @@ export default Ember.Service.extend({
     // add heading row
     var head = array[0];
     for (var i = 0; i < head.length; i++) {
-      var value = head[i] + "";
+      value = head[i] + "";
       if (i > 0) {
         line += options.separator;
       }
@@ -41,11 +42,11 @@ export default Ember.Service.extend({
     str += line + '\r\n';
 
     // add items
-    for (var i = 1; i < array.length; i++) {
-      var line = '';
+    for (i = 1; i < array.length; i++) {
+      line = '';
 
       for (var index = 0; index < array[i].length; index++) {
-        var value = array[i][index];
+        value = array[i][index];
 
         if (index > 0) {
           line += options.separator;
@@ -69,7 +70,7 @@ export default Ember.Service.extend({
         }
         else {
           value = value + "";
-          if (value && value != 'undefined') {
+          if (value && value !== 'undefined') {
             line += '"' + value.replace(/"/g, '""') + '"';
           }
           else {
