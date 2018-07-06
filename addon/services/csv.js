@@ -1,4 +1,4 @@
-import Ember from "ember";
+import Service from '@ember/service';
 import optionize from "../utils/utils";
 
 const defaultConfig = {
@@ -7,7 +7,7 @@ const defaultConfig = {
   withSeparator: true
 };
 
-export default Ember.Service.extend({
+export default Service.extend({
 
   export: function (data, options) {
     options = optionize(options, defaultConfig);

@@ -1,10 +1,10 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 module.exports = {
   name: 'ember-cli-data-export',
 
-  included: function(app) {
+  included(app) {
     this._super.included(app);
     app.import('vendor/Blob.js');
     app.import('vendor/FileSaver-1.3.3.js');
