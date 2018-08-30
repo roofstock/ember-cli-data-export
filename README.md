@@ -10,6 +10,7 @@ Forked from [roofstock/ember-cli-data-export](https://github.com/roofstock/ember
 the dependency on `ember-select-list`, which hasn't been updated in a long time
 - The `csv` and `excel` services are not automatically injected
 - The dummy app now has content (a couple of buttons to generate demo files)
+- Multiple sheets can be added to a single XLSX file
 
 
 ## Installation
@@ -23,7 +24,7 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
  - feed a datastructure that's an array of arrays, where each internal array is the set of data to be rendered for that row.
  - Example: [['Title 1', 'Title 2', 'Title 3'],['row1cell1', 'row1cell2', 'row1cell3'],['row2cell1', 'row2cell2', 'row2cell3']]
 
-## Example
+## Examples
  ```javascript
     // Don't forget to inject the service(s) as needed
     csv: service(),
@@ -36,7 +37,22 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
         ['row2cell1', 'row2cell2', 'row2cell3']
     ];
 
-    if (type === 'Excel') {
+    if (type === 'MultiExcel') {
+      let sheets = [
+        {
+          name: 'Demo sheet',
+          data
+        },
+        {
+          name: 'Supplemental sheet',
+          data: [
+            ['Foo', 'Bar'],
+            ['Baz', 'Foobar']
+          ]
+        }
+      ];
+      this.excel.export(sheets, {multiSheet: true, fileName: 'test.xlsx'});
+    } else if (type === 'Excel') {
       this.excel.export(data, {sheetName: 'sheet1', fileName: 'test.xlsx'});
     } else if (type === 'CSV') {
       this.csv.export(data, {fileName: 'test.csv'});

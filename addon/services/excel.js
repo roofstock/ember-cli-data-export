@@ -3,7 +3,8 @@ import optionize from "../utils/utils";
 
 const defaultConfig = {
   sheetName: 'Sheet1',
-  fileName: 'export.xlsx'
+  fileName: 'export.xlsx',
+  multiSheet: false,
 };
 
 export default Service.extend({
@@ -59,11 +60,20 @@ export default Service.extend({
       this.Sheets = {};
     }
 
-    let wb = new Workbook(), ws = sheet_from_array_of_arrays(data);
+    let wb = new Workbook();
 
-    /* add worksheet to workbook */
-    wb.SheetNames.push(options.sheetName);
-    wb.Sheets[options.sheetName] = ws;
+    if (options.multiSheet) {
+      // Add multiple worksheets to workbook
+      data.forEach(sheet => {
+        wb.SheetNames.push(sheet.name);
+        wb.Sheets[sheet.name] = sheet_from_array_of_arrays(sheet.data);
+      });
+    } else {
+      // Add a single worksheet to workbook
+      wb.SheetNames.push(options.sheetName);
+      wb.Sheets[options.sheetName] = sheet_from_array_of_arrays(data);
+    }
+
     let wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
 
     saveAs(new Blob([s2ab(wbout)],{type:"application/octet-stream"}), options.fileName);

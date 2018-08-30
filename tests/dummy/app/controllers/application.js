@@ -4,8 +4,21 @@ import { inject as service } from '@ember/service';
 const data = [
   ['Column 1', 'Column 2', 'Column 3'],
   ['foo', 'bar', 'baz'],
-  ['foobar', 'barbar', 'bazbar']
+  ['foobar', 'barbar', 'bazbar'],
 ];
+const sheets = [
+  {
+    name: 'Demo',
+    data
+  },
+  {
+    name: 'Extra Sheet',
+    data: [
+      ['Foo', 'Bar'],
+      ['Baz', 'Foobar'],
+    ]
+  },
+]
 
 export default Controller.extend({
   csv: service(),
@@ -17,6 +30,9 @@ export default Controller.extend({
     },
     downloadXLSX() {
       this.excel.export(data, {sheetName: 'demo', fileName: 'demo.xlsx'});
+    },
+    downloadMultiSheetXLSX() {
+      this.excel.export(sheets, {multiSheet: true, fileName: 'demo.xlsx'});
     }
   }
 
