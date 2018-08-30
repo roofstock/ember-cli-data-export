@@ -17,7 +17,7 @@ module('Unit | Service | csv', function(hooks) {
         'Cooper'
       ],
     ];
-    const expectedCSV = '\"name\",\"last_name\"\r\n\"Dale\",\"Cooper\"\r\n';
+    const expectedCSV = '"name","last_name"\r\n"Dale","Cooper"\r\n';
     const options = {
       separator: ',',
       withSeparator: false,
