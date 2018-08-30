@@ -1,7 +1,10 @@
 {
-  "name": "ember-cli-data-export",
+  "name": "ember-spreadsheet-export",
   "version": "0.1.29",
   "author": "Matt Armstrong",
+  "contributors": [
+    "Paul Nicholls"
+  ],
   "description": "Provides ability to export a set of json data as excel or csv file.",
   "directories": {
     "doc": "doc",
@@ -12,7 +15,7 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "https://github.com/roofstock/ember-cli-data-export",
+  "repository": "https://github.com/pauln/ember-spreadsheet-export",
   "engines": {
     "node": ">= 4"
   },
@@ -46,7 +49,8 @@
     "ember-cli",
     "xlsx",
     "excel",
-    "csv"
+    "csv",
+    "spreadsheet"
   ],
   "dependencies": {
     "ember-cli-htmlbars": "^1.2.0",

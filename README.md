@@ -1,10 +1,12 @@
-# ember-cli-data-export
+# ember-spreadsheet-export
 
 Addon that encapsulates ability to render a data set as either excel or csv.
 
+Forked from [roofstock/ember-cli-data-export](https://github.com/roofstock/ember-cli-data-export).
+
 ## Installation
 
- - ember install ember-cli-data-export
+ - ember install ember-spreadsheet-export
 
 ## Usage
 
