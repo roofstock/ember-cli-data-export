@@ -10,7 +10,7 @@ const data = [
 export default Controller.extend({
   csv: service(),
   excel: service(),
-  
+
   actions: {
     downloadCSV() {
       this.csv.export(data, {fileName: 'demo.csv'});
