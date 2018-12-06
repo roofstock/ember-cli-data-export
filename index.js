@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-cli-data-export',
+  name: 'ember-spreadsheet-export',
 
   included: function(app) {
     this._super.included(app);
