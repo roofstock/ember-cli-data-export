@@ -11,7 +11,7 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - The `csv` and `excel` services are not automatically injected
 - The dummy app now has content (a couple of buttons to generate demo files)
 - Multiple sheets can be added to a single XLSX file
-
+- [v0.3.0] The `excel` service supports merging cells via an additional `merges` option
 
 ## Installation
 
@@ -23,6 +23,26 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
  - automatically injects a service for both excel and csv format
  - feed a datastructure that's an array of arrays, where each internal array is the set of data to be rendered for that row.
  - Example: [['Title 1', 'Title 2', 'Title 3'],['row1cell1', 'row1cell2', 'row1cell3'],['row2cell1', 'row2cell2', 'row2cell3']]
+ 
+#### Merging Cells (Excel only)
+
+In order to merge cells, an array of `merges` can be passed in the `options` hash.
+Each element of this array should be an object taking the following form:
+```json
+{
+  s: {
+    r: 0,
+    c: 0,
+  },
+  e: {
+    r: 1,
+    c: 0,
+  },
+}
+``` 
+`s` defines the start of the range to be merged, and `e` the end of the range.
+Within each, `r` is the row index and `c` is the column index.
+The example above would therefore merge the first two cells in the first column.
 
 ## Examples
  ```javascript

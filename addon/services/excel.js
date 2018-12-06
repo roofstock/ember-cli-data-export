@@ -67,11 +67,17 @@ export default Service.extend({
       data.forEach(sheet => {
         wb.SheetNames.push(sheet.name);
         wb.Sheets[sheet.name] = sheet_from_array_of_arrays(sheet.data);
+        if (sheet.merges && sheet.merges.length) {
+          wb.Sheets[sheet.name]['!merges'] = sheet.merges;
+        }
       });
     } else {
       // Add a single worksheet to workbook
       wb.SheetNames.push(options.sheetName);
       wb.Sheets[options.sheetName] = sheet_from_array_of_arrays(data);
+      if (options.merges && options.merges.length) {
+        wb.Sheets[options.sheetName]['!merges'] = options.merges;
+      }
     }
 
     let wbout = XLSX.write(wb, {bookType:'xlsx', bookSST:true, type: 'binary'});
