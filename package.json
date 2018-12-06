@@ -18,12 +18,12 @@
   "devDependencies": {
     "broccoli-asset-rev": "^2.7.0",
     "ember-ajax": "^3.0.0",
-    "ember-cli": "~3.3.0",
+    "ember-cli": "^3.5.1",
     "ember-cli-dependency-checker": "^2.0.0",
     "ember-cli-eslint": "^4.2.1",
     "ember-cli-htmlbars-inline-precompile": "^1.0.0",
     "ember-cli-inject-live-reload": "^1.4.1",
-    "ember-cli-qunit": "^4.3.2",
+    "ember-cli-qunit": "^4.4.0",
     "ember-cli-shims": "^1.2.0",
     "ember-cli-sri": "^2.1.0",
     "ember-cli-uglify": "^2.0.0",
@@ -35,11 +35,11 @@
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.3.0",
     "ember-source-channel-url": "^1.0.1",
-    "ember-try": "^0.2.23",
+    "ember-try": "^1.1.0",
     "eslint-plugin-ember": "^5.0.0",
     "eslint-plugin-node": "^6.0.1",
     "loader.js": "^4.0.10",
-    "qunit-dom": "^0.6.2"
+    "qunit-dom": "^0.8.2"
   },
   "keywords": [
     "ember-addon",
