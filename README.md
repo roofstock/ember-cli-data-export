@@ -28,7 +28,7 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 
 In order to merge cells, an array of `merges` can be passed in the `options` hash.
 Each element of this array should be an object taking the following form:
-```json
+```javascript
 {
   s: {
     r: 0,
