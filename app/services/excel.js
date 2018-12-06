@@ -1,1 +1,1 @@
-export { default, initialize } from 'ember-cli-data-export/services/excel';
+export { default, initialize } from 'ember-spreadsheet-export/services/excel';

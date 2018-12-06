@@ -1,1 +1,1 @@
-export { default, initialize } from 'ember-cli-data-export/services/csv';
+export { default, initialize } from 'ember-spreadsheet-export/services/csv';
