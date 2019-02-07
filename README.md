@@ -12,7 +12,7 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - The dummy app now has content (a couple of buttons to generate demo files)
 - Multiple sheets can be added to a single XLSX file
 - [v0.3.0] The `excel` service supports merging cells via an additional `merges` option
-
+- [v0.4.0] The `csv` service supports a new `raw` option, which disables quoting and escaping of cell contents
 ## Installation
 
  - ember install ember-spreadsheet-export
