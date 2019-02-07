@@ -21,6 +21,29 @@ module('Unit | Service | csv', function(hooks) {
     const options = {
       separator: ',',
       withSeparator: false,
+      raw: false,
+    };
+
+    assert.deepEqual(service.jsonToCsv(array, options), expectedCSV);
+  });
+
+  test('#jsonToCsv - with raw mode on, it should return a string in CSV format without quote wrapping', function(assert) {
+    const service = this.owner.lookup('service:csv');
+    const array = [
+      [
+        'name',
+        'last_name',
+      ],
+      [
+        'Dale',
+        'Cooper'
+      ],
+    ];
+    const expectedCSV = 'name,last_name\r\nDale,Cooper\r\n';
+    const options = {
+      separator: ',',
+      withSeparator: false,
+      raw: true,
     };
 
     assert.deepEqual(service.jsonToCsv(array, options), expectedCSV);
