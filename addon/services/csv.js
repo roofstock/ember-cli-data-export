@@ -6,11 +6,13 @@ const defaultConfig = {
   fileName: 'export.csv',
   raw: false,
   separator: ',',
-  withSeparator: true
+  withSeparator: true,
+  autoQuote: false,
 };
 
-export default Service.extend({
+const needsQuoteRE = /[",\r\n]/;
 
+export default Service.extend({
   export: function (data, options) {
     options = optionize(options, defaultConfig);
 
@@ -38,7 +40,7 @@ export default Service.extend({
       if (i > 0) {
         line += options.separator;
       }
-      line += this.quoteValue(value, options.raw);
+      line += this.quoteValue(value, options);
     }
 
     str += line + '\r\n';
@@ -64,19 +66,19 @@ export default Service.extend({
               resolveValue = value._d.toString();
             }
 
-            line += this.quoteValue(resolveValue, options.raw);
+            line += this.quoteValue(resolveValue, options);
           }
           else {
-            line += this.quoteValue('', options.raw);
+            line += this.quoteValue('', options);
           }
         }
         else {
           value = value + "";
           if (value && value !== 'undefined') {
-            line += this.quoteValue(value, options.raw);
+            line += this.quoteValue(value, options);
           }
           else {
-            line += this.quoteValue('', options.raw);
+            line += this.quoteValue('', options);
           }
         }
       }
@@ -86,7 +88,20 @@ export default Service.extend({
     return str;
   },
 
-  quoteValue(value, raw) {
-    return raw ? value : '"' + value.replace(/"/g, '""') + '"';
+  quoteValue(value, options) {
+    switch(true) {
+      case options.raw:
+        return value;
+      case options.autoQuote:
+        if (value.match(needsQuoteRE)) {
+          return this.doQuoteValue(value);
+        }
+        return value;
+    }
+    return this.doQuoteValue(value);
+  },
+
+  doQuoteValue(value) {
+    return '"' + value.replace(/"/g, '""') + '"';
   },
 });

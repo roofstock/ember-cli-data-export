@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 const data = [
   ['Column 1', 'Column 2', 'Column 3'],
   ['foo', 'bar', 'baz'],
-  ['foobar', 'barbar', 'bazbar'],
+  ['foo\r\nbar', 'bar, bar', '"bazbar"'],
 ];
 const sheets = [
   {
@@ -26,7 +26,7 @@ export default Controller.extend({
 
   actions: {
     downloadCSV() {
-      this.csv.export(data, {fileName: 'demo.csv'});
+      this.csv.export(data, {fileName: 'demo.csv', autoQuote: true});
     },
     downloadXLSX() {
       this.excel.export(data, {sheetName: 'demo', fileName: 'demo.xlsx'});
