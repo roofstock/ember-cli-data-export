@@ -6,8 +6,8 @@ const defaultConfig = {
   fileName: 'export.xlsx',
 };
 
-export default Service.extend({
-  export: function (data, options) {
+export default class Excel extends Service {
+  export(data, options) {
     options = optionize(options, defaultConfig);
 
     function s2ab(s) {
@@ -88,5 +88,5 @@ export default Service.extend({
     var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
 
     saveAs(new Blob([s2ab(wbout)], { type: 'application/octet-stream' }), options.fileName);
-  },
-});
+  }
+}

@@ -7,14 +7,14 @@ const defaultConfig = {
   withSeparator: true,
 };
 
-export default Service.extend({
-  export: function (data, options) {
+export default class Csv extends Service {
+  export(data, options) {
     options = optionize(options, defaultConfig);
 
     var csv = this.jsonToCsv(data, options);
 
     saveAs(new Blob([csv], { type: 'data:text/csv;charset=utf-8' }), options.fileName);
-  },
+  }
 
   jsonToCsv(objArray, options) {
     var array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
@@ -78,5 +78,5 @@ export default Service.extend({
       str += line + '\r\n';
     }
     return str;
-  },
-});
+  }
+}

@@ -1,8 +1,8 @@
-<div class='export-selector-container' style="white-space: nowrap">
+<div class="export-selector-container" style="white-space: nowrap">
   <XSelect @value={{this.selectedType}} @onChange={{fn (mut this.selectedType)}} as |xs|>
     {{#each this.types as |type|}}
       <xs.option @value={{type}}>{{type}}</xs.option>
     {{/each}}
   </XSelect>
-  <button style="margin-left:5px" type="button" {{action 'triggerExport'}}>{{actionText}}</button>
+  <button style="margin-left:5px" type="button" {{on "click" this.triggerExport}}>{{this.actionText}}</button>
 </div>

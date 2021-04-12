@@ -1,14 +1,16 @@
-import Component from '@ember/component';
-import layout from '../templates/components/export-selector-onselect';
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  layout: layout,
-  selectPrompt: 'Export File',
+export default class ExportSelectorOnselect extends Component {
+  get selectPrompt() {
+    return this.args.selectPrompt || 'Export File';
+  }
 
-  actions: {
-    triggerExport: function (selectedType) {
-      this.sendAction('exportData', selectedType);
-      this.$('#exportTypes').val('');
-    },
-  },
-});
+  @action
+  triggerExport(event) {
+    let selectedType = event.target.value;
+    if (this.args.exportData) {
+      this.args.exportData(selectedType);
+    }
+  }
+}
