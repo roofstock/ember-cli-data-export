@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  name: require('./package').name,
+  name: 'ember-cli-data-export',
 
   included(app) {
     this._super.included(app);
@@ -9,5 +9,5 @@ module.exports = {
     app.import('vendor/FileSaver-1.3.3.js');
     app.import('vendor/jszip-0.10.8.js');
     app.import('vendor/xlsx-0.10.8.js');
-  }
+  },
 };
