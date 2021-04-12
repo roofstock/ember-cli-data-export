@@ -1,1 +1,1 @@
-export { default, initialize } from 'ember-cli-data-export/services/csv';
+export { default, initialize } from '@izea/ember-cli-data-export/services/csv';
