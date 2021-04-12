@@ -1,10 +1,10 @@
-# ember-cli-data-export
+ember-cli-data-export
+==============================================================================
 
 Addon that encapsulates ability to render a data set as either excel or csv.
 
-## Installation
 
-* `ember install ember-cli-data-export` 
+* `ember install ember-cli-data-export`
 
 ## Usage
 
