@@ -2,4 +2,7 @@
 
 module.exports = {
   extends: 'octane',
+  rules: {
+    quotes: 'double',
+  },
 };

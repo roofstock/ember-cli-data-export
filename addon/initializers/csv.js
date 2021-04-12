@@ -7,5 +7,5 @@ export function initialize() {
 
 export default {
   name: 'csv',
-  initialize: initialize
+  initialize: initialize,
 };

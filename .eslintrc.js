@@ -11,20 +11,16 @@ module.exports = {
     },
   },
   plugins: ['ember'],
-  extends: [
-    'eslint:recommended',
-    'plugin:ember/recommended',
-    'plugin:prettier/recommended',
-  ],
+  extends: ['eslint:recommended', 'plugin:ember/recommended', 'plugin:prettier/recommended'],
   env: {
     browser: true,
   },
-  "globals": {
-    "Proxy": true,
-    "saveAs": true,
-    "XLSX": true,
-    "ArrayBuffer": true,
-    "Uint8Array": true
+  globals: {
+    Proxy: true,
+    saveAs: true,
+    XLSX: true,
+    ArrayBuffer: true,
+    Uint8Array: true,
   },
   rules: {},
   overrides: [
@@ -41,12 +37,7 @@ module.exports = {
         'config/**/*.js',
         'tests/dummy/config/**/*.js',
       ],
-      excludedFiles: [
-        'addon/**',
-        'addon-test-support/**',
-        'app/**',
-        'tests/dummy/app/**',
-      ],
+      excludedFiles: ['addon/**', 'addon-test-support/**', 'app/**', 'tests/dummy/app/**'],
       parserOptions: {
         sourceType: 'script',
       },

@@ -1,20 +1,19 @@
 import Service from '@ember/service';
-import optionize from "../utils/utils";
+import optionize from '../utils/utils';
 
 const defaultConfig = {
   fileName: 'export.csv',
   separator: ',',
-  withSeparator: true
+  withSeparator: true,
 };
 
 export default Service.extend({
-
   export: function (data, options) {
     options = optionize(options, defaultConfig);
 
     var csv = this.jsonToCsv(data, options);
 
-    saveAs(new Blob([csv],{type:"data:text/csv;charset=utf-8"}), options.fileName);
+    saveAs(new Blob([csv], { type: 'data:text/csv;charset=utf-8' }), options.fileName);
   },
 
   jsonToCsv(objArray, options) {
@@ -32,7 +31,7 @@ export default Service.extend({
     // add heading row
     var head = array[0];
     for (var i = 0; i < head.length; i++) {
-      value = head[i] + "";
+      value = head[i] + '';
       if (i > 0) {
         line += options.separator;
       }
@@ -56,24 +55,21 @@ export default Service.extend({
             var resolveValue;
             if (value._d instanceof Date) {
               // dealing with encoding issue in IE browsers.
-              resolveValue = (value._d.getMonth() + 1) + '/' + value._d.getDate()  + '/' + value._d.getFullYear();
-            }
-            else {
+              resolveValue =
+                value._d.getMonth() + 1 + '/' + value._d.getDate() + '/' + value._d.getFullYear();
+            } else {
               resolveValue = value._d.toString();
             }
 
             line += '"' + resolveValue.replace(/"/g, '""') + '"';
-          }
-          else {
+          } else {
             line += '""';
           }
-        }
-        else {
-          value = value + "";
+        } else {
+          value = value + '';
           if (value && value !== 'undefined') {
             line += '"' + value.replace(/"/g, '""') + '"';
-          }
-          else {
+          } else {
             line += '""';
           }
         }
@@ -82,5 +78,5 @@ export default Service.extend({
       str += line + '\r\n';
     }
     return str;
-  }
+  },
 });

@@ -7,5 +7,5 @@ export function initialize() {
 
 export default {
   name: 'excel',
-  initialize: initialize
+  initialize: initialize,
 };

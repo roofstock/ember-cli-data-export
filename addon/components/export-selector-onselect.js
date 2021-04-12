@@ -6,9 +6,9 @@ export default Component.extend({
   selectPrompt: 'Export File',
 
   actions: {
-    triggerExport: function(selectedType) {
+    triggerExport: function (selectedType) {
       this.sendAction('exportData', selectedType);
       this.$('#exportTypes').val('');
-    }
-  }
+    },
+  },
 });
