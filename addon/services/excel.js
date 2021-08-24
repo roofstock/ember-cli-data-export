@@ -9,9 +9,9 @@ const defaultConfig = {
   multiSheet: false,
 };
 
-export default Service.extend({
+export default class ExcelService extends Service {
 
-  export : function(data, options) {
+  export(data, options) {
 
     options = optionize(options, defaultConfig);
 
@@ -88,4 +88,4 @@ export default Service.extend({
 
   }
 
-});
+}

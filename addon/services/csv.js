@@ -12,14 +12,14 @@ const defaultConfig = {
 
 const needsQuoteRE = /[",\r\n]/;
 
-export default Service.extend({
-  export: function (data, options) {
+export default class CsvService extends Service {
+  export(data, options) {
     options = optionize(options, defaultConfig);
 
     let csv = this.jsonToCsv(data, options);
 
     saveAs(new Blob([csv],{type:"data:text/csv;charset=utf-8"}), options.fileName);
-  },
+  }
 
   jsonToCsv(objArray, options) {
     let array = typeof objArray !== 'object' ? JSON.parse(objArray) : objArray;
@@ -86,7 +86,7 @@ export default Service.extend({
       str += line + '\r\n';
     }
     return str;
-  },
+  }
 
   quoteValue(value, options) {
     switch(true) {
@@ -99,9 +99,9 @@ export default Service.extend({
         return value;
     }
     return this.doQuoteValue(value);
-  },
+  }
 
   doQuoteValue(value) {
     return '"' + value.replace(/"/g, '""') + '"';
-  },
-});
+  }
+}
