@@ -1,10 +1,25 @@
 {
   "name": "ember-spreadsheet-export",
   "version": "0.5.0",
+  "description": "Provides ability to export a set of json data as excel or csv file.",
+  "keywords": [
+    "ember-addon",
+    "ember-cli",
+    "xlsx",
+    "excel",
+    "csv",
+    "spreadsheet"
+  ],
   "contributors": [
     "Paul Nicholls"
   ],
-  "description": "Provides ability to export a set of json data as excel or csv file.",
+  "repository": "https://github.com/pauln/ember-spreadsheet-export",
+  "license": "MIT",
+  "author": "Matt Armstrong",
+  "directories": {
+    "doc": "doc",
+    "test": "tests"
+  },
   "scripts": {
     "build": "ember build",
     "lint:js": "eslint .",
@@ -12,8 +27,12 @@
     "test": "ember test",
     "test:all": "ember try:each"
   },
-  "engines": {
-    "node": "6.* || 8.* || >= 10.*"
+  "dependencies": {
+    "ember-auto-import": "^1.5.3",
+    "ember-cli-babel": "^6.6.0",
+    "ember-cli-htmlbars": "^2.0.1",
+    "file-saver": "^2.0.2",
+    "xlsx": "^0.9.13"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.7.0",
@@ -41,27 +60,8 @@
     "loader.js": "^4.0.10",
     "qunit-dom": "^0.8.2"
   },
-  "keywords": [
-    "ember-addon",
-    "ember-cli",
-    "xlsx",
-    "excel",
-    "csv",
-    "spreadsheet"
-  ],
-  "repository": "https://github.com/pauln/ember-spreadsheet-export",
-  "license": "MIT",
-  "author": "Matt Armstrong",
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
-  "dependencies": {
-    "ember-auto-import": "^1.5.3",
-    "ember-cli-babel": "^6.6.0",
-    "ember-cli-htmlbars": "^2.0.1",
-    "file-saver": "^2.0.2",
-    "xlsx": "^0.9.13"
+  "engines": {
+    "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
