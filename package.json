@@ -10,22 +10,28 @@
     "csv",
     "spreadsheet"
   ],
-  "contributors": [
-    "Paul Nicholls"
-  ],
   "repository": "https://github.com/pauln/ember-spreadsheet-export",
   "license": "MIT",
   "author": "Matt Armstrong",
+  "contributors": [
+    "Paul Nicholls"
+  ],
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
-    "lint:js": "eslint .",
+    "build": "ember build --environment=production",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel \"lint:!(fix)\"",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
+    "lint:hbs": "ember-template-lint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
     "start": "ember serve",
-    "test": "ember test",
-    "test:all": "ember try:each"
+    "test": "npm-run-all lint test:*",
+    "test:ember": "ember test",
+    "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
     "ember-auto-import": "^1.5.3",
