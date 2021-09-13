@@ -78,24 +78,24 @@ export default class MyComponent extends Component {
   // Then go ahead and use it in your code
   @action export() {
     const data = [
-        ['Title 1', 'Title 2', 'Title 3'],
-        ['row1cell1', 'row1cell2', 'row1cell3'],
-        ['row2cell1', 'row2cell2', 'row2cell3']
+      ['Title 1', 'Title 2', 'Title 3'],
+      ['row1cell1', 'row1cell2', 'row1cell3'],
+      ['row2cell1', 'row2cell2', 'row2cell3'],
     ];
 
     if (type === 'MultiExcel') {
       const sheets = [
         {
           name: 'Demo sheet',
-          data
+          data,
         },
         {
           name: 'Supplemental sheet',
           data: [
             ['Foo', 'Bar'],
-            ['Baz', 'Foobar']
-          ]
-        }
+            ['Baz', 'Foobar'],
+          ],
+        },
       ];
       this.excel.export(sheets, { multiSheet: true, fileName: 'test.xlsx' });
     } else if (type === 'Excel') {
