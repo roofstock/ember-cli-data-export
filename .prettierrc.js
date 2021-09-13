@@ -2,7 +2,6 @@
 
 module.exports = {
   singleQuote: true,
-  printWidth: 300,
   overrides: [
     {
       files: '*.hbs',

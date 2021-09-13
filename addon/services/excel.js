@@ -102,8 +102,15 @@ export default class ExcelService extends Service {
       }
     }
 
-    let wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+    let wbout = XLSX.write(wb, {
+      bookType: 'xlsx',
+      bookSST: true,
+      type: 'binary',
+    });
 
-    saveAs(new Blob([s2ab(wbout)], { type: 'application/octet-stream' }), options.fileName);
+    saveAs(
+      new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
+      options.fileName
+    );
   }
 }

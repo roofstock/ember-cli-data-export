@@ -18,7 +18,10 @@ export default class CsvService extends Service {
 
     let csv = this.jsonToCsv(data, options);
 
-    saveAs(new Blob([csv], { type: 'data:text/csv;charset=utf-8' }), options.fileName);
+    saveAs(
+      new Blob([csv], { type: 'data:text/csv;charset=utf-8' }),
+      options.fileName
+    );
   }
 
   jsonToCsv(objArray, options) {
@@ -60,7 +63,13 @@ export default class CsvService extends Service {
             let resolveValue;
             if (value._d instanceof Date) {
               // dealing with encoding issue in IE browsers.
-              resolveValue = value._d.getMonth() + 1 + '/' + value._d.getDate() + '/' + value._d.getFullYear();
+              resolveValue =
+                value._d.getMonth() +
+                1 +
+                '/' +
+                value._d.getDate() +
+                '/' +
+                value._d.getFullYear();
             } else {
               resolveValue = value._d.toString();
             }
