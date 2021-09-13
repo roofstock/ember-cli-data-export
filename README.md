@@ -65,20 +65,26 @@ Within each, `r` is the row index and `c` is the column index.
 The example above would therefore merge the first two cells in the first column.
 
 ## Examples
- ```javascript
-    // Don't forget to inject the service(s) as needed
-    csv: service(),
-    excel: service(),
-    
-    // Then go ahead and use it in your code
-    let data = [
+```javascript
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+
+export default class MyComponent extends Component {
+  // Don't forget to inject the service(s) as needed
+  @service csv;
+  @service excel;
+
+  // Then go ahead and use it in your code
+  @action export() {
+    const data = [
         ['Title 1', 'Title 2', 'Title 3'],
         ['row1cell1', 'row1cell2', 'row1cell3'],
         ['row2cell1', 'row2cell2', 'row2cell3']
     ];
 
     if (type === 'MultiExcel') {
-      let sheets = [
+      const sheets = [
         {
           name: 'Demo sheet',
           data
@@ -91,10 +97,12 @@ The example above would therefore merge the first two cells in the first column.
           ]
         }
       ];
-      this.excel.export(sheets, {multiSheet: true, fileName: 'test.xlsx'});
+      this.excel.export(sheets, { multiSheet: true, fileName: 'test.xlsx' });
     } else if (type === 'Excel') {
-      this.excel.export(data, {sheetName: 'sheet1', fileName: 'test.xlsx'});
+      this.excel.export(data, { sheetName: 'sheet1', fileName: 'test.xlsx' });
     } else if (type === 'CSV') {
-      this.csv.export(data, {fileName: 'test.csv', autoQuote: true});
+      this.csv.export(data, { fileName: 'test.csv', autoQuote: true });
     }
+  }
+}
 ```
