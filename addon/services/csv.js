@@ -1,6 +1,6 @@
 import Service from '@ember/service';
 import { saveAs } from 'file-saver';
-import optionize from "../utils/utils";
+import optionize from '../utils/utils';
 
 const defaultConfig = {
   fileName: 'export.csv',
@@ -18,7 +18,7 @@ export default class CsvService extends Service {
 
     let csv = this.jsonToCsv(data, options);
 
-    saveAs(new Blob([csv],{type:"data:text/csv;charset=utf-8"}), options.fileName);
+    saveAs(new Blob([csv], { type: 'data:text/csv;charset=utf-8' }), options.fileName);
   }
 
   jsonToCsv(objArray, options) {
@@ -36,7 +36,7 @@ export default class CsvService extends Service {
     // add heading row
     let head = array[0];
     for (let i = 0; i < head.length; i++) {
-      value = head[i] + "";
+      value = head[i] + '';
       if (i > 0) {
         line += options.separator;
       }
@@ -60,24 +60,20 @@ export default class CsvService extends Service {
             let resolveValue;
             if (value._d instanceof Date) {
               // dealing with encoding issue in IE browsers.
-              resolveValue = (value._d.getMonth() + 1) + '/' + value._d.getDate()  + '/' + value._d.getFullYear();
-            }
-            else {
+              resolveValue = value._d.getMonth() + 1 + '/' + value._d.getDate() + '/' + value._d.getFullYear();
+            } else {
               resolveValue = value._d.toString();
             }
 
             line += this.quoteValue(resolveValue, options);
-          }
-          else {
+          } else {
             line += this.quoteValue('', options);
           }
-        }
-        else {
-          value = value + "";
+        } else {
+          value = value + '';
           if (value && value !== 'undefined') {
             line += this.quoteValue(value, options);
-          }
-          else {
+          } else {
             line += this.quoteValue('', options);
           }
         }
@@ -89,7 +85,7 @@ export default class CsvService extends Service {
   }
 
   quoteValue(value, options) {
-    switch(true) {
+    switch (true) {
       case options.raw:
         return value;
       case options.autoQuote:

@@ -1,10 +1,14 @@
-# ember-spreadsheet-export
+ember-spreadsheet-export
+==============================================================================
 
 Addon that encapsulates ability to render a data set as either excel or csv.
 
 Forked from [roofstock/ember-cli-data-export](https://github.com/roofstock/ember-cli-data-export).
 
-#### Differences from `ember-cli-data-export` include:
+
+Differences from `ember-cli-data-export` include:
+------------------------------------------------------------------------------
+
 - Dependencies have been updated to address various deprecations
 - The undocumented `export-selector` and `export-selector-onselect` components have been removed, in order to remove
 the dependency on `ember-select-list`, which hasn't been updated in a long time
@@ -15,9 +19,23 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - [v0.4.0] The `csv` service supports a new `raw` option, which disables quoting and escaping of cell contents
 - [v0.5.0] The `csv` service supports a new `autoQuote` option, which only quotes/escapes cells which need it
 (those containing quotes, commas or newlines).
-## Installation
 
- - ember install ember-spreadsheet-export
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.20 or above
+* Ember CLI v3.20 or above
+* Node.js v12 or above
+
+
+Installation
+------------------------------------------------------------------------------
+
+```
+ember install ember-spreadsheet-export
+```
+
 
 ## Usage
 
