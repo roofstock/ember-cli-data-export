@@ -1,10 +1,14 @@
-# ember-spreadsheet-export
+ember-spreadsheet-export
+==============================================================================
 
 Addon that encapsulates ability to render a data set as either excel or csv.
 
 Forked from [roofstock/ember-cli-data-export](https://github.com/roofstock/ember-cli-data-export).
 
-#### Differences from `ember-cli-data-export` include:
+
+Differences from `ember-cli-data-export` include:
+------------------------------------------------------------------------------
+
 - Dependencies have been updated to address various deprecations
 - The undocumented `export-selector` and `export-selector-onselect` components have been removed, in order to remove
 the dependency on `ember-select-list`, which hasn't been updated in a long time
@@ -15,9 +19,23 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - [v0.4.0] The `csv` service supports a new `raw` option, which disables quoting and escaping of cell contents
 - [v0.5.0] The `csv` service supports a new `autoQuote` option, which only quotes/escapes cells which need it
 (those containing quotes, commas or newlines).
-## Installation
 
- - ember install ember-spreadsheet-export
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v3.20 or above
+* Ember CLI v3.20 or above
+* Node.js v12 or above
+
+
+Installation
+------------------------------------------------------------------------------
+
+```
+ember install ember-spreadsheet-export
+```
+
 
 ## Usage
 
@@ -47,36 +65,44 @@ Within each, `r` is the row index and `c` is the column index.
 The example above would therefore merge the first two cells in the first column.
 
 ## Examples
- ```javascript
-    // Don't forget to inject the service(s) as needed
-    csv: service(),
-    excel: service(),
-    
-    // Then go ahead and use it in your code
-    let data = [
-        ['Title 1', 'Title 2', 'Title 3'],
-        ['row1cell1', 'row1cell2', 'row1cell3'],
-        ['row2cell1', 'row2cell2', 'row2cell3']
+```javascript
+import Component from '@glimmer/component';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+
+export default class MyComponent extends Component {
+  // Don't forget to inject the service(s) as needed
+  @service csv;
+  @service excel;
+
+  // Then go ahead and use it in your code
+  @action export() {
+    const data = [
+      ['Title 1', 'Title 2', 'Title 3'],
+      ['row1cell1', 'row1cell2', 'row1cell3'],
+      ['row2cell1', 'row2cell2', 'row2cell3'],
     ];
 
     if (type === 'MultiExcel') {
-      let sheets = [
+      const sheets = [
         {
           name: 'Demo sheet',
-          data
+          data,
         },
         {
           name: 'Supplemental sheet',
           data: [
             ['Foo', 'Bar'],
-            ['Baz', 'Foobar']
-          ]
-        }
+            ['Baz', 'Foobar'],
+          ],
+        },
       ];
-      this.excel.export(sheets, {multiSheet: true, fileName: 'test.xlsx'});
+      this.excel.export(sheets, { multiSheet: true, fileName: 'test.xlsx' });
     } else if (type === 'Excel') {
-      this.excel.export(data, {sheetName: 'sheet1', fileName: 'test.xlsx'});
+      this.excel.export(data, { sheetName: 'sheet1', fileName: 'test.xlsx' });
     } else if (type === 'CSV') {
-      this.csv.export(data, {fileName: 'test.csv', autoQuote: true});
+      this.csv.export(data, { fileName: 'test.csv', autoQuote: true });
     }
+  }
+}
 ```

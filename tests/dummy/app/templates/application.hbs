@@ -1,6 +1,7 @@
 <h2 id="title">Welcome to Ember</h2>
 
-<button onClick={{action "downloadCSV"}}>Download CSV</button>
-<button onClick={{action "downloadXLSX"}}>Download XLSX (Excel)</button>
-<button onClick={{action "downloadMultiSheetXLSX"}}>Download multi-sheet XLSX (Excel)</button>
+<button type="button" {{on "click" this.downloadCSV}}>Download CSV</button>
+<button type="button" {{on "click" this.downloadXLSX}}>Download XLSX (Excel)</button>
+<button type="button" {{on "click" this.downloadMultiSheetXLSX}}>Download multi-sheet XLSX (Excel)</button>
+
 {{outlet}}

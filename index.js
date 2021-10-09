@@ -1,10 +1,10 @@
 'use strict';
 
 module.exports = {
-  name: 'ember-spreadsheet-export',
+  name: require('./package').name,
 
-  included: function(app) {
-    this._super.included(app);
+  included(app) {
+    this._super.included.apply(this, arguments);
     app.import('vendor/Blob.js');
-  }
+  },
 };
