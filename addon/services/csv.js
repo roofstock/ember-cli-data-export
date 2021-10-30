@@ -3,6 +3,8 @@ import { saveAs } from 'file-saver';
 import optionize from '../utils/utils';
 
 const defaultConfig = {
+  download: true,
+  returnBlob: false,
   fileName: 'export.csv',
   raw: false,
   separator: ',',
@@ -17,11 +19,14 @@ export default class CsvService extends Service {
     options = optionize(options, defaultConfig);
 
     let csv = this.jsonToCsv(data, options);
+    let output = new Blob([csv], { type: 'data:text/csv;charset=utf-8' });
 
-    saveAs(
-      new Blob([csv], { type: 'data:text/csv;charset=utf-8' }),
-      options.fileName
-    );
+    if (options.download) {
+      saveAs(output, options.fileName);
+    }
+    if (options.returnBlob) {
+      return output;
+    }
   }
 
   jsonToCsv(objArray, options) {
