@@ -5,6 +5,8 @@ import optionize from '../utils/utils';
 
 const defaultConfig = {
   sheetName: 'Sheet1',
+  download: true,
+  returnBlob: false,
   fileName: 'export.xlsx',
   multiSheet: false,
 };
@@ -108,9 +110,13 @@ export default class ExcelService extends Service {
       type: 'binary',
     });
 
-    saveAs(
-      new Blob([s2ab(wbout)], { type: 'application/octet-stream' }),
-      options.fileName
-    );
+    let output = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
+    
+    if (options.download) {
+      saveAs(output, options.fileName);
+    }
+    if (options.returnBlob) {
+      return output;
+    }
   }
 }
