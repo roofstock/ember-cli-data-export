@@ -19,6 +19,7 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - [v0.4.0] The `csv` service supports a new `raw` option, which disables quoting and escaping of cell contents
 - [v0.5.0] The `csv` service supports a new `autoQuote` option, which only quotes/escapes cells which need it
 (those containing quotes, commas or newlines).
+- [unreleased] The `excel` service accepts either a nested array or an `HTMLTableElement` as data for any sheet
 - [unreleased] Both services can optionally return the generated blob instead of (or as well as) downloading it
 
 
@@ -40,11 +41,12 @@ ember install ember-spreadsheet-export
 
 ## Usage
 
- - uses js-xlsx library for rendering excel content.
- - automatically injects a service for both excel and csv format
- - feed a datastructure that's an array of arrays, where each internal array is the set of data to be rendered for that row.
- - Example: [['Title 1', 'Title 2', 'Title 3'],['row1cell1', 'row1cell2', 'row1cell3'],['row2cell1', 'row2cell2', 'row2cell3']]
- 
+ - Inject the service(s) for Excel and/or CSV formats, depending on your needs.
+ - Feed a datastructure that's an array of arrays, where each internal array is the set of data to be rendered for that row.
+   - Example: `[['Title 1', 'Title 2', 'Title 3'],['row1cell1', 'row1cell2', 'row1cell3'],['row2cell1', 'row2cell2', 'row2cell3']]`
+ - Alternatively, the Excel service accepts an `HTMLTableElement` instead of an array, and will parse the table.
+ - The Excel service can generate a multi-sheet workbook - pass an array of objects, each containing a sheet name and data (array or HTML table).
+
 #### Merging Cells (Excel only)
 
 In order to merge cells, an array of `merges` can be passed in the `options` hash.
@@ -96,6 +98,10 @@ export default class MyComponent extends Component {
             ['Foo', 'Bar'],
             ['Baz', 'Foobar'],
           ],
+        },
+        {
+          name: 'HTML table',
+          data: document.querySelector('#data'),
         },
       ];
       this.excel.export(sheets, { multiSheet: true, fileName: 'test.xlsx' });

@@ -9,6 +9,7 @@ const defaultConfig = {
   returnBlob: false,
   fileName: 'export.xlsx',
   multiSheet: false,
+  tableParseOptions: {},
 };
 
 export default class ExcelService extends Service {
@@ -30,6 +31,13 @@ export default class ExcelService extends Service {
       }
       let epoch = Date.parse(v);
       return (epoch - new Date(Date.UTC(1899, 11, 30))) / (24 * 60 * 60 * 1000);
+    }
+
+    function sheet_from_data(data, options) {
+      if (data instanceof HTMLTableElement) {
+        return XLSX.utils.table_to_sheet(data, options.tableParseOptions);
+      }
+      return sheet_from_array_of_arrays(data);
     }
 
     function sheet_from_array_of_arrays(data) {
@@ -90,7 +98,7 @@ export default class ExcelService extends Service {
       // Add multiple worksheets to workbook
       data.forEach((sheet) => {
         wb.SheetNames.push(sheet.name);
-        wb.Sheets[sheet.name] = sheet_from_array_of_arrays(sheet.data);
+        wb.Sheets[sheet.name] = sheet_from_data(sheet.data, options);
         if (sheet.merges && sheet.merges.length) {
           wb.Sheets[sheet.name]['!merges'] = sheet.merges;
         }
@@ -98,7 +106,7 @@ export default class ExcelService extends Service {
     } else {
       // Add a single worksheet to workbook
       wb.SheetNames.push(options.sheetName);
-      wb.Sheets[options.sheetName] = sheet_from_array_of_arrays(data);
+      wb.Sheets[options.sheetName] = sheet_from_data(data, options);
       if (options.merges && options.merges.length) {
         wb.Sheets[options.sheetName]['!merges'] = options.merges;
       }

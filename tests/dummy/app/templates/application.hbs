@@ -1,7 +1,51 @@
-<h2 id="title">Welcome to Ember</h2>
+<h2 id="title">ember-spreadsheet-export demo</h2>
 
 <button type="button" {{on "click" this.downloadCSV}}>Download CSV</button>
 <button type="button" {{on "click" this.downloadXLSX}}>Download XLSX (Excel)</button>
-<button type="button" {{on "click" this.downloadMultiSheetXLSX}}>Download multi-sheet XLSX (Excel)</button>
+<button type="button" {{on "click" this.downloadMultiSheetXLSX}}>Download multi-sheet XLSX (Excel)</button><br>
+<button type="button" {{on "click" this.downloadTableAsXLSX}}>Download first HTML table as XLSX (Excel)</button>
+<button type="button" {{on "click" this.downloadTablesAsXLSX}}>Download both HTML tables as XLSX (Excel)</button>
 
+<table id="demoTable1">
+    <thead>
+        <tr>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Foo</td>
+            <td>Bar</td>
+            <td>Baz</td>
+        </tr>
+        <tr>
+            <td colspan="2">Foobar</td>
+            <td>Baz</td>
+        </tr>
+    </tbody>
+</table>
+
+<table id="demoTable2">
+    <thead>
+        <tr>
+            <th>Column A</th>
+            <th>Column B</th>
+            <th>Column C</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>FooA</td>
+            <td>BarB</td>
+            <td>BazC</td>
+        </tr>
+        <tr>
+            <td>Foo1</td>
+            <td>Bar2</td>
+            <td>Baz3</td>
+        </tr>
+    </tbody>
+</table>
 {{outlet}}
