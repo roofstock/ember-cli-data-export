@@ -19,8 +19,8 @@ the dependency on `ember-select-list`, which hasn't been updated in a long time
 - [v0.4.0] The `csv` service supports a new `raw` option, which disables quoting and escaping of cell contents
 - [v0.5.0] The `csv` service supports a new `autoQuote` option, which only quotes/escapes cells which need it
 (those containing quotes, commas or newlines).
-- [unreleased] The `excel` service accepts either a nested array or an `HTMLTableElement` as data for any sheet
-- [unreleased] Both services can optionally return the generated blob instead of (or as well as) downloading it
+- [v0.6.0] The `excel` service accepts either a nested array or an `HTMLTableElement` as data for any sheet
+- [v0.6.0] Both services can optionally return the generated blob instead of (or as well as) downloading it
 
 
 Compatibility
