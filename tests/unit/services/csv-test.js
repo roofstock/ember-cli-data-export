@@ -18,7 +18,7 @@ test('#jsonToCsv - with valid Array of Arrays, it should return an string with C
       'Cooper'
     ],
   ];
-  const expectedCSV = '\"name\",\"last_name\"\r\n\"Dale\",\"Cooper\"\r\n';
+  const expectedCSV = '"name","last_name"\r\n"Dale","Cooper"\r\n';
   const options = {
     separator: ',',
     withSeparator: false,

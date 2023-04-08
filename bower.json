@@ -1,8 +1,0 @@
-{
-  "name": "ember-cli-data-export",
-  "dependencies": {
-    "jquery": "^1.11.3"
-  },
-  "devDependencies": {
-  }
-}
