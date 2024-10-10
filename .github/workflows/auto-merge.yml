@@ -1,0 +1,36 @@
+﻿name: Auto Merge
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  merge-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🔑 Get App Token
+        id: rs-git-distributor
+        uses: getsentry/action-github-app-token@v3
+        with:
+          app_id: ${{ secrets.RS_GIT_DISTRIBUTOR_APP_ID }}
+          private_key: ${{ secrets.RS_GIT_DISTRIBUTOR_PRIV_KEY }}
+
+      # Checkout all branches to be use by task below
+      - name: 🔓 Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ steps.rs-git-distributor.outputs.token }}
+
+      - name: 📄 List branches
+        run: |
+          git branch -a
+
+      - name: ⬇️ Execute auto merge
+        shell: pwsh
+        run: |
+          .github/workflows/src/auto-merge/auto-merge.ps1
+        env:
+          GITHUB_TOKEN: ${{ steps.rs-git-distributor.outputs.token }}
